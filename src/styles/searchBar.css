@@ -1,0 +1,15 @@
+.containSearchBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+  }
+  
+  .searchBar {
+    width: 40vh;
+    border-radius: 30px;
+    height: 5vh;
+    padding-left: 1rem;
+  }

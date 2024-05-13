@@ -1,3 +1,4 @@
+import "../styles/searchBar.css"
 
 function SearchBar({ characters, setFilteredCharacters, setSearch }) {
 
