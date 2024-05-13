@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from "react";
+import "../src/styles/App.css";
+import Card2 from "./components/Card2";
+import SearchBar from "./components/SearchBar";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [characters, setCharacters] = useState([]);
+  const [filteredCharacters, setFilteredCharacters] = useState([]);
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    fetch(`https://www.amiiboapi.com/api/amiibo/?character=${search}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setCharacters(data.amiibo);
+        setFilteredCharacters(data.amiibo);
+      })
+      .catch((err) => console.error(err));
+  }, [search]);
+
+  const handleSearch = (searchTerm) => {
+    setSearch(searchTerm);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <section>
+      <SearchBar onSearch={handleSearch} setSearch={setSearch}/>
+      <Card2 characters={filteredCharacters} />
+    </section>
+  );
 }
 
-export default App
+export default App;
