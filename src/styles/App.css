@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+@font-face {
+  font-family: "";
+  src: url("");
+  font-family: "";
+  src: url("")
+}
+
+:root {
+  --primary-background-color: #4f2f65;
+  --secondary-background-color: #778e9a;
+  --primary-color: #bdbbba;
+  --primary-font: "";
+  --secondary-font: "";
+}
